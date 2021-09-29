@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Overworld
+  - City
+  - Town
   layers:
   - Default
   - TransparentFX
@@ -41,6 +44,21 @@ TagManager:
   - name: Background
     uniqueID: 2125471301
     locked: 0
+  - name: Ground Detail
+    uniqueID: 3013502935
+    locked: 0
+  - name: Shadows
+    uniqueID: 3646616203
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Props
+    uniqueID: 743738697
+    locked: 0
+  - name: Obstacles
+    uniqueID: 2786296197
+    locked: 0
+  - name: Foreground
+    uniqueID: 3067698299
     locked: 0
