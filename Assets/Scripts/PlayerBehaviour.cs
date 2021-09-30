@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
+    public Camera playerCamera;
+
     [SerializeField]
     private float moveSpeed = 1.0f;
 
@@ -23,6 +25,7 @@ public class PlayerBehaviour : MonoBehaviour
         float inputY = Input.GetAxisRaw("Vertical");
         transform.position += new Vector3(inputX * moveSpeed * Time.deltaTime, inputY * moveSpeed * Time.deltaTime, 0);
 
+        playerCamera.transform.position = new Vector3(transform.position.x, transform.position.y, -10); 
         //rigidbody.velocity = new Vector2(inputX * moveSpeed, inputY * moveSpeed);
     }
 

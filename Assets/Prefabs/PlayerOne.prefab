@@ -114,7 +114,7 @@ SpringJoint2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 6474686146499863736}
@@ -309,7 +309,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 3169564385366757128, guid: e3b911cbb43cf9b4185074f766d3f775, type: 3}
+  m_Sprite: {fileID: -5898458878708132144, guid: e3b911cbb43cf9b4185074f766d3f775, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -332,6 +332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7f8e2a041ecc584b934122fe6ef9fae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCamera: {fileID: 519420031}
   moveSpeed: 1
   rigidbody: {fileID: 6474686146499863736}
 --- !u!50 &6474686146499863736
