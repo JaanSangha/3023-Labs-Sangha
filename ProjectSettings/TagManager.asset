@@ -7,6 +7,8 @@ TagManager:
   - Overworld
   - City
   - Town
+  - RandomEncounter
+  - BattleScene
   layers:
   - Default
   - TransparentFX
@@ -14,7 +16,7 @@ TagManager:
   - Background
   - Water
   - UI
-  - 
+  - EncounterLayer
   - 
   - 
   - 
@@ -46,6 +48,9 @@ TagManager:
     locked: 0
   - name: Ground Detail
     uniqueID: 3013502935
+    locked: 0
+  - name: RandomEncounters
+    uniqueID: 915868569
     locked: 0
   - name: Shadows
     uniqueID: 3646616203
