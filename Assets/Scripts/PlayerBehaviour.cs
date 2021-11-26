@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class PlayerBehaviour : MonoBehaviour
 {
     public Camera playerCamera;
-    public GameObject BattleScene;
+   // public GameObject BattleScene;
+    public GameObject BattleScenePrefab;
 
     [SerializeField]
     private float moveSpeed = 1.0f;
@@ -16,14 +17,19 @@ public class PlayerBehaviour : MonoBehaviour
 
     public bool canMove = true;
 
+    public float yDirection;
+
+    private Animator playerAnimator;
+
     public LayerMask randomEncounterLayer;
 
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
-        BattleScene = GameObject.FindGameObjectWithTag("BattleScene");
-        BattleScene.SetActive(false);
+        playerAnimator = GetComponent<Animator>();
+       // BattleScene = GameObject.FindGameObjectWithTag("BattleScene");
+        //BattleScene.SetActive(false);
     }
 
     // Update is called once per frame
@@ -37,16 +43,20 @@ public class PlayerBehaviour : MonoBehaviour
         //rigidbody.velocity = new Vector2(inputX * moveSpeed, inputY * moveSpeed);
         
 
-        if (BattleScene.activeSelf)
-        {
-            canMove = false;
-            Time.timeScale = 0.0f;
-        }
-        else
-        {
-            canMove = true;
-            Time.timeScale = 1.0f;
-        }
+        //if (BattleScene.activeSelf)
+        //{
+        //    canMove = false;
+        //    Time.timeScale = 0.0f;
+        //}
+        //else
+        //{
+        //    canMove = true;
+        //    Time.timeScale = 1.0f;
+        //}
+
+        playerAnimator.SetFloat("yVelocity", rigidbody.velocity.y);
+        playerAnimator.SetFloat("xVelocity", rigidbody.velocity.x);
+
     }
 
     void FixedUpdate()
@@ -59,14 +69,24 @@ public class PlayerBehaviour : MonoBehaviour
             rigidbody.velocity = new Vector2(inputX * moveSpeed, inputY * moveSpeed);
         }
 
-        //if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
-        //{
+       // if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+       // {
+
+       // }
             if (rigidbody.velocity.x != 0 || rigidbody.velocity.y != 0)
             {
                 CheckForEncounter();
                 Debug.Log("moving");
             }
-       // }
+
+        Debug.Log(rigidbody.velocity.y);
+        Debug.Log("x: :" + rigidbody.velocity.x);
+
+    }
+
+    public void SetCanMoveTrue()
+    {
+        canMove = true;
     }
 
     void CheckForEncounter()
@@ -78,8 +98,10 @@ public class PlayerBehaviour : MonoBehaviour
             if (p <= 8)
             {
                 //canMove = false;
-                BattleScene.SetActive(true);
+                //BattleScene.SetActive(true);
+                Instantiate(BattleScenePrefab, new Vector3(0, 0, 0), Quaternion.identity);
                 Debug.Log("Encounter");
+                canMove = false;
             }
         }
 

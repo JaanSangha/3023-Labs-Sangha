@@ -242,11 +242,12 @@ GameObject:
   - component: {fileID: 6474686146499863738}
   - component: {fileID: 6474686146499863739}
   - component: {fileID: 6474686146499863740}
+  - component: {fileID: 7843547703106234857}
   - component: {fileID: 6474686146499863736}
   - component: {fileID: 6474686146499863737}
   - component: {fileID: 3628995290026630843}
   - component: {fileID: 1368478937}
-  - component: {fileID: 5843379762985904136}
+  - component: {fileID: 7069365344389708822}
   m_Layer: 0
   m_Name: PlayerOne
   m_TagString: Untagged
@@ -334,12 +335,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 519420031}
-  BattleScene: {fileID: 0}
+  BattleScenePrefab: {fileID: 7889978884528644795, guid: 7230cc7c50e08444ca3f8fb026a9242a, type: 3}
   moveSpeed: 1
   rigidbody: {fileID: 6474686146499863736}
+  canMove: 1
+  yDirection: 0
   randomEncounterLayer:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &7843547703106234857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6474686146499863741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36c19464e5a0d724f827bd28d94ee956, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilities:
+  - {fileID: 11400000, guid: c82ab170c6e115b41b6d3cdfb21f8afa, type: 2}
+  - {fileID: 11400000, guid: 384116608e10c404197fcf99222499aa, type: 2}
+  onAbilityCast:
+    m_PersistentCalls:
+      m_Calls: []
+  myEncounter: {fileID: 6673249900435255217, guid: 7230cc7c50e08444ca3f8fb026a9242a, type: 3}
 --- !u!50 &6474686146499863736
 Rigidbody2D:
   serializedVersion: 4
@@ -416,7 +438,7 @@ MonoBehaviour:
   m_ShapePathHash: 1837293538
   m_Mesh: {fileID: 0}
   m_InstanceId: -41628
---- !u!95 &5843379762985904136
+--- !u!95 &7069365344389708822
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -426,7 +448,7 @@ Animator:
   m_GameObject: {fileID: 6474686146499863741}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: eb979fdff2caa5740af84b5aecb29188, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
