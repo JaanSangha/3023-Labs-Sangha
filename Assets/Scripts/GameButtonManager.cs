@@ -16,6 +16,7 @@ public class GameButtonManager : MonoBehaviour
     [SerializeField]
     private float textPromptSecondsPerCharacter = 0.1f;
 
+    GameObject soundManager;
     public GameObject PlayerRef;
     public GameObject BattleScene;
     public Slider PlayerMana;
@@ -28,6 +29,8 @@ public class GameButtonManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        soundManager = GameObject.Find("SoundManager");
+        PlayerRef.GetComponent<PlayerBehaviour>().SetCanMoveFalse();
         animateTextCoroutine = AnimateTextCoroutine("You have encountered a wild enemy! Choose an Ability.", textPromptSecondsPerCharacter);
         StartCoroutine(animateTextCoroutine);
 
@@ -102,6 +105,7 @@ public class GameButtonManager : MonoBehaviour
     {
         if (playerTurn)
         {
+            soundManager.GetComponent<SoundManager>().FadeOutEncounter();
             PlayerRef.GetComponent<PlayerBehaviour>().SetCanMoveTrue();
             Destroy(this.gameObject);
         }

@@ -336,6 +336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 519420031}
   BattleScenePrefab: {fileID: 7889978884528644795, guid: 7230cc7c50e08444ca3f8fb026a9242a, type: 3}
+  soundManager: {fileID: 3796255354510506105, guid: 7c177ea57241bbf42b7c0946a9643228, type: 3}
   moveSpeed: 1
   rigidbody: {fileID: 6474686146499863736}
   canMove: 1
@@ -361,6 +362,7 @@ MonoBehaviour:
   onAbilityCast:
     m_PersistentCalls:
       m_Calls: []
+  mana: 100
   myEncounter: {fileID: 6673249900435255217, guid: 7230cc7c50e08444ca3f8fb026a9242a, type: 3}
 --- !u!50 &6474686146499863736
 Rigidbody2D:

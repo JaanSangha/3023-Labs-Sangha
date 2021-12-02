@@ -9,6 +9,8 @@ public class PlayerBehaviour : MonoBehaviour
    // public GameObject BattleScene;
     public GameObject BattleScenePrefab;
 
+    GameObject soundManager;
+
     [SerializeField]
     private float moveSpeed = 1.0f;
 
@@ -26,10 +28,12 @@ public class PlayerBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        soundManager = GameObject.Find("SoundManager");
         rigidbody = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
-       // BattleScene = GameObject.FindGameObjectWithTag("BattleScene");
-        //BattleScene.SetActive(false);
+
+        canMove = true;
+
     }
 
     // Update is called once per frame
@@ -89,6 +93,11 @@ public class PlayerBehaviour : MonoBehaviour
         canMove = true;
     }
 
+    public void SetCanMoveFalse()
+    {
+        canMove = false;
+    }
+
     void CheckForEncounter()
     {
         float p = Random.Range(1.0f, 1001.0f);
@@ -100,8 +109,9 @@ public class PlayerBehaviour : MonoBehaviour
                 //canMove = false;
                 //BattleScene.SetActive(true);
                 Instantiate(BattleScenePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+                soundManager.GetComponent<SoundManager>().PlayEncounterMusic();
                 Debug.Log("Encounter");
-                canMove = false;
+                //canMove = false;
             }
         }
 
