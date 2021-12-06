@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerCharacter : ICharacter
 {
     public float mana = 100;
+    public float pHealth = 100;
 
     public EncounterInstance myEncounter;
     public override void TakeTurn(EncounterInstance encounter)

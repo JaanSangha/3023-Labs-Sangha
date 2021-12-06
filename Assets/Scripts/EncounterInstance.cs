@@ -12,6 +12,7 @@ public class EncounterInstance : MonoBehaviour
         private set { turnNumber = value; }
     }
 
+    public int eHealth = 100;
     public PlayerCharacter player;
     public AiCharacter enemy;
     public ICharacter currentCharacter;
