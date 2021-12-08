@@ -21,4 +21,9 @@ public class ButtonManager : MonoBehaviour
     {
         SceneManager.LoadScene("Overworld");
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

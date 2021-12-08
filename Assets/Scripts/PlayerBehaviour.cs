@@ -25,7 +25,6 @@ public class PlayerBehaviour : MonoBehaviour
 
     public LayerMask randomEncounterLayer;
 
-    Vector3 playerPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +32,7 @@ public class PlayerBehaviour : MonoBehaviour
         soundManager = GameObject.Find("SoundManager");
         rigidbody = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
-        playerPosition = transform.position;
+        transform.position = new Vector3(PlayerPrefs.GetFloat("XPosition"), PlayerPrefs.GetFloat("YPosition"), 0);
         canMove = true;
         GameSaver.OnSaveEvent.AddListener(SaveLocation);
         GameSaver.OnLoadEvent.AddListener(LoadLocation);
@@ -82,7 +81,6 @@ public class PlayerBehaviour : MonoBehaviour
        // }
         if (rigidbody.velocity.x != 0 || rigidbody.velocity.y != 0)
         {
-            playerPosition = transform.position;
             CheckForEncounter();
             Debug.Log("moving");
         }
@@ -123,9 +121,9 @@ public class PlayerBehaviour : MonoBehaviour
 
     void SaveLocation()
     {
-        PlayerPrefs.SetString("Location", "Loacation X: " + playerPosition.x + " Location Y: " + playerPosition.y);
-        PlayerPrefs.SetFloat("XPosition", playerPosition.x);
-        PlayerPrefs.SetFloat("YPosition", playerPosition.y);
+        PlayerPrefs.SetString("Location", "Loacation X: " + transform.position.x + " Location Y: " + transform.position.y);
+        PlayerPrefs.SetFloat("XPosition", transform.position.x);
+        PlayerPrefs.SetFloat("YPosition", transform.position.y);
         Debug.Log("LocationSaved");
     }
     void LoadLocation()
