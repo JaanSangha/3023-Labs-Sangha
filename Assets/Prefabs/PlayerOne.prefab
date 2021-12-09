@@ -248,6 +248,7 @@ GameObject:
   - component: {fileID: 3628995290026630843}
   - component: {fileID: 1368478937}
   - component: {fileID: 7069365344389708822}
+  - component: {fileID: -3305643513829107854}
   m_Layer: 0
   m_Name: PlayerOne
   m_TagString: Untagged
@@ -336,7 +337,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 519420031}
   BattleScenePrefab: {fileID: 7889978884528644795, guid: 7230cc7c50e08444ca3f8fb026a9242a, type: 3}
-  soundManager: {fileID: 3796255354510506105, guid: 7c177ea57241bbf42b7c0946a9643228, type: 3}
   moveSpeed: 1
   rigidbody: {fileID: 6474686146499863736}
   canMove: 1
@@ -363,6 +363,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   mana: 100
+  pHealth: 100
   myEncounter: {fileID: 6673249900435255217, guid: 7230cc7c50e08444ca3f8fb026a9242a, type: 3}
 --- !u!50 &6474686146499863736
 Rigidbody2D:
@@ -459,3 +460,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-3305643513829107854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6474686146499863741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29a1d2aec95a5634fafefa6e9e0adaf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

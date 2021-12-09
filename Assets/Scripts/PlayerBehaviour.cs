@@ -25,15 +25,17 @@ public class PlayerBehaviour : MonoBehaviour
 
     public LayerMask randomEncounterLayer;
 
+
     // Start is called before the first frame update
     void Start()
     {
         soundManager = GameObject.Find("SoundManager");
         rigidbody = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
-
+        transform.position = new Vector3(PlayerPrefs.GetFloat("XPosition"), PlayerPrefs.GetFloat("YPosition"), 0);
         canMove = true;
-
+        GameSaver.OnSaveEvent.AddListener(SaveLocation);
+        GameSaver.OnLoadEvent.AddListener(LoadLocation);
     }
 
     // Update is called once per frame
@@ -61,6 +63,11 @@ public class PlayerBehaviour : MonoBehaviour
         playerAnimator.SetFloat("yVelocity", rigidbody.velocity.y);
         playerAnimator.SetFloat("xVelocity", rigidbody.velocity.x);
 
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            PlayRandomEncounterDebug();
+        }
+
     }
 
     void FixedUpdate()
@@ -77,14 +84,14 @@ public class PlayerBehaviour : MonoBehaviour
        // {
 
        // }
-            if (rigidbody.velocity.x != 0 || rigidbody.velocity.y != 0)
-            {
-                CheckForEncounter();
-                Debug.Log("moving");
-            }
+        if (rigidbody.velocity.x != 0 || rigidbody.velocity.y != 0)
+        {
+            CheckForEncounter();
+            Debug.Log("moving");
+        }
 
-        Debug.Log(rigidbody.velocity.y);
-        Debug.Log("x: :" + rigidbody.velocity.x);
+        //Debug.Log(rigidbody.velocity.y);
+        //Debug.Log("x: :" + rigidbody.velocity.x);
 
     }
 
@@ -106,15 +113,38 @@ public class PlayerBehaviour : MonoBehaviour
         {
             if (p <= 8)
             {
-                //canMove = false;
-                //BattleScene.SetActive(true);
-                Instantiate(BattleScenePrefab, new Vector3(0, 0, 0), Quaternion.identity);
-                soundManager.GetComponent<SoundManager>().PlayEncounterMusic();
-                Debug.Log("Encounter");
-                //canMove = false;
+                PlayRandomEncounterDebug();
             }
         }
 
     }
 
+<<<<<<< HEAD
+    void PlayRandomEncounterDebug()
+    {
+        //canMove = false;
+        //BattleScene.SetActive(true);
+        Instantiate(BattleScenePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        soundManager.GetComponent<SoundManager>().PlayEncounterMusic();
+        Debug.Log("Encounter");
+        //canMove = false;
+    }
+
+=======
+    void SaveLocation()
+    {
+        PlayerPrefs.SetString("Location", "Loacation X: " + transform.position.x + " Location Y: " + transform.position.y);
+        PlayerPrefs.SetFloat("XPosition", transform.position.x);
+        PlayerPrefs.SetFloat("YPosition", transform.position.y);
+        Debug.Log("LocationSaved");
+    }
+    void LoadLocation()
+    {
+        string loadLocation = PlayerPrefs.GetString("Location", "");
+        transform.position = new Vector3(PlayerPrefs.GetFloat("XPosition"), PlayerPrefs.GetFloat("YPosition"), 0);
+        Debug.Log(loadLocation);
+        Debug.Log("LocationLoaded");
+
+    }
+>>>>>>> 50ec57d0a1912c44ddc3e7865d3253ec03625f0e
 }

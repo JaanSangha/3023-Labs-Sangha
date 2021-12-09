@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Charge
   description: 
-  effects: []
+  effects:
+  - {fileID: 11400000, guid: cf5f388d51eda5e418f7f026ebdfec40, type: 2}

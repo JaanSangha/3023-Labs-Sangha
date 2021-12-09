@@ -9,23 +9,16 @@ public abstract class ICharacter : MonoBehaviour
     protected Ability[] abilities;
 
     private EncounterInstance encounter;
+
+    [SerializeField]
+    protected EncounterUI encounterUI;
+    
     //first character is the caster, second is the target
-    public UnityEvent<Ability> onAbilityCast;
+    //public UnityEvent<Ability> onAbilityCast;
 
     public void UseAbility(int abilitySlot, ICharacter self, ICharacter opponent)
     {
         abilities[abilitySlot].Cast(self, opponent);
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public abstract void TakeTurn(EncounterInstance encounter);

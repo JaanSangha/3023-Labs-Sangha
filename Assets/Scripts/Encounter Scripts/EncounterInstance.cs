@@ -5,6 +5,67 @@ using UnityEngine;
 
 public class EncounterInstance : MonoBehaviour
 {
+    [SerializeField]
+    private PlayerCharacter player;
+
+    public PlayerCharacter Player
+    {
+        get { return player; }
+        private set { player = value; }
+    }
+
+    [SerializeField]
+    private AICharacter enemy;
+
+    public AICharacter Enemy
+    {
+        get { return enemy; }
+        private set { enemy = value; }
+    }
+
+    [SerializeField]
+    private ICharacter currentCharacterTurn;
+    //Events
+    public UnityEvent<ICharacter> onCharacterTurnBegin;
+    public UnityEvent<ICharacter> onCharacterTurnEnd;
+
+    public UnityEvent<PlayerCharacter> onPlayerTurnBegin;
+    public UnityEvent<PlayerCharacter> onPlayerTurnEnd;
+
+    public UnityEvent<AICharacter> onEnemyTurnBegin;
+    public UnityEvent<AICharacter> onEnemyTurnEnd;
+
+    //Turn counter
+    private int turnNumber;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        currentCharacterTurn = player;
+        onPlayerTurnBegin.Invoke(player);
+    }
+
+    public void AdvanceTurns()
+    {
+        onCharacterTurnEnd.Invoke(currentCharacterTurn);
+
+        if (currentCharacterTurn == player)
+        {
+            onPlayerTurnEnd.Invoke(player);
+            currentCharacterTurn = Enemy;
+        }
+        else
+        {
+            currentCharacterTurn = player;
+            onPlayerTurnBegin.Invoke(player);
+        }
+        turnNumber++;
+
+        onCharacterTurnBegin.Invoke(currentCharacterTurn);
+        currentCharacterTurn.TakeTurn(this);
+    }
+
+    /*
     private int turnNumber;
     public int TurnNumber
     {
@@ -14,11 +75,11 @@ public class EncounterInstance : MonoBehaviour
 
     public int eHealth = 100;
     public PlayerCharacter player;
-    public AiCharacter enemy;
+    public AICharacter enemy;
     public ICharacter currentCharacter;
 
     public UnityEvent<PlayerCharacter> onPlayerTurnBegin;
-    public UnityEvent<AiCharacter> onEnemyTurnBegin;
+    public UnityEvent<AICharacter> onEnemyTurnBegin;
     // Start is called before the first frame update
     void Start()
     {
@@ -71,4 +132,5 @@ public class EncounterInstance : MonoBehaviour
         currentCharacter.TakeTurn(this);
 
     }
+    */
 }

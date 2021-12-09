@@ -34,35 +34,35 @@ public class GameButtonManager : MonoBehaviour
         animateTextCoroutine = AnimateTextCoroutine("You have encountered a wild enemy! Choose an Ability.", textPromptSecondsPerCharacter);
         StartCoroutine(animateTextCoroutine);
 
-        encounter.player.onAbilityCast.AddListener(AnnouncePlayerMoveUsed);
-        encounter.enemy.onAbilityCast.AddListener(AnnounceEnemyMoveUsed);
+        //encounter.Player.onAbilityCast.AddListener(AnnouncePlayerMoveUsed);
+        //encounter.Enemy.onAbilityCast.AddListener(AnnounceEnemyMoveUsed);
         //playerTurn = true;
-        encounter.player.mana = 100;
-        encounter.enemy.mana = 100;
-        PlayerMana.value = encounter.player.mana;
-        EnemyMana.value = encounter.enemy.mana;
+        //encounter.Player.mana = 100;
+        //encounter.Enemy.mana = 100;
+        //PlayerMana.value = encounter.Player.mana;
+        //EnemyMana.value = encounter.Enemy.mana;
     }
-    void AnnouncePlayerMoveUsed(Ability name)
-    {
-        if(animateTextCoroutine != null)
-        {
-            StopCoroutine(animateTextCoroutine);
-        }
-        animateTextCoroutine = AnimateTextCoroutine("Player Used " + name, textPromptSecondsPerCharacter);
-        PlayerMana.value = encounter.player.mana;
-        StartCoroutine(animateTextCoroutine);
-    }
+    //void AnnouncePlayerMoveUsed(Ability name)
+    //{
+    //    if(animateTextCoroutine != null)
+    //    {
+    //        StopCoroutine(animateTextCoroutine);
+    //    }
+    //    animateTextCoroutine = AnimateTextCoroutine("Player Used " + name, textPromptSecondsPerCharacter);
+    //    //PlayerMana.value = encounter.Player.mana;
+    //    StartCoroutine(animateTextCoroutine);
+    //}
 
-    void AnnounceEnemyMoveUsed(Ability name)
-    {
-        if (animateTextCoroutine != null)
-        {
-            StopCoroutine(animateTextCoroutine);
-        }
-        animateTextCoroutine = AnimateTextCoroutine("Enemy Used " + name, textPromptSecondsPerCharacter);
-        EnemyMana.value = encounter.enemy.mana;
-        StartCoroutine(animateTextCoroutine);
-    }
+    //void AnnounceEnemyMoveUsed(Ability name)
+    //{
+    //    if (animateTextCoroutine != null)
+    //    {
+    //        StopCoroutine(animateTextCoroutine);
+    //    }
+    //    animateTextCoroutine = AnimateTextCoroutine("Enemy Used " + name, textPromptSecondsPerCharacter);
+    //    EnemyMana.value = encounter.Enemy.mana;
+    //    StartCoroutine(animateTextCoroutine);
+    //}
 
     IEnumerator AnimateTextCoroutine(string message, float secondsPerCharacter = 0.1f)
     {
