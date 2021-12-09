@@ -1696,11 +1696,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilities:
-  - {fileID: 11400000, guid: 18fb20743e9880c48a9ba95c51be7cfa, type: 2}
   - {fileID: 11400000, guid: 384116608e10c404197fcf99222499aa, type: 2}
   - {fileID: 11400000, guid: dd1d5439ae4de8f43a583df95fe12410, type: 2}
+  - {fileID: 11400000, guid: c82ab170c6e115b41b6d3cdfb21f8afa, type: 2}
   encounterUI: {fileID: 4484427959482430982}
   mana: 100
+  player: {fileID: 0}
+  myEncounter: {fileID: 0}
 --- !u!1 &7889978885556133002
 GameObject:
   m_ObjectHideFlags: 0

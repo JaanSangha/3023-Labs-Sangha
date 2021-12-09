@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d12631c384ab35640b627343630c2753, type: 3}
-  m_Name: Growl
+  m_Script: {fileID: 11500000, guid: 83de6c7017d2c9a48a42cb51fc8a3a17, type: 3}
+  m_Name: Stun
   m_EditorClassIdentifier: 
-  name: Growl
-  description: 
-  effects:
-  - {fileID: 11400000, guid: 85a5962ebbcf76843a915749eaf78d66, type: 2}
+  StunAmount: 0

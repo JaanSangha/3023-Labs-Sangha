@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Scratch
   description: 
-  effects: []
+  effects:
+  - {fileID: 11400000, guid: cf5f388d51eda5e418f7f026ebdfec40, type: 2}
+  - {fileID: 11400000, guid: 85a5962ebbcf76843a915749eaf78d66, type: 2}

@@ -5,8 +5,14 @@ using UnityEngine;
 public class AICharacter : ICharacter
 {
     public float mana = 100;
+    [SerializeField]
+    private PlayerCharacter player;
+    [SerializeField]
+    private EncounterInstance myEncounter;
     public override void TakeTurn(EncounterInstance encounter)
     {
+        myEncounter = encounter;
+        player = encounter.Player;
         StartCoroutine(DelayDecision(encounter));
 
         //have ai choose what to do here
@@ -25,7 +31,13 @@ public class AICharacter : ICharacter
         //Choose what action to do!
         Debug.Log("Enemy taking turn");
         yield return new WaitForSeconds(3.0f);
+        UseAbility(0);
         encounter.AdvanceTurns();
+    }
+
+    public void UseAbility(int slot)
+    {
+        abilities[slot].Cast(this, player);
     }
 
 }

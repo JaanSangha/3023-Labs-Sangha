@@ -44,7 +44,7 @@ public class GameButtonManager : MonoBehaviour
     }
     //void AnnouncePlayerMoveUsed(Ability name)
     //{
-    //    if(animateTextCoroutine != null)
+    //    if (animateTextCoroutine != null)
     //    {
     //        StopCoroutine(animateTextCoroutine);
     //    }

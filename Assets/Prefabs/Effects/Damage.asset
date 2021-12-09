@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Damage
   m_EditorClassIdentifier: 
   DamageAmount: 10
+  effectDebugName: Damage!

@@ -15,4 +15,4 @@ MonoBehaviour:
   name: Charge
   description: 
   effects:
-  - {fileID: 11400000, guid: cf5f388d51eda5e418f7f026ebdfec40, type: 2}
+  - {fileID: 11400000, guid: e655f21a60c6b80488561d2a69d3647f, type: 2}
