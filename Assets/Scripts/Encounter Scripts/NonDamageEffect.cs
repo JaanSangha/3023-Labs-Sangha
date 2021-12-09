@@ -11,13 +11,26 @@ public class NonDamageEffect : IEffect
     int manaCost = 30;
     [SerializeField]
     int coolDown = 1; // Number of turns the non damage has effect each time
+    int coolDownCount = 0;
     public override void ApplyEffect(ICharacter self, ICharacter other, EncounterInstance encounter)
     {
-        if (coolDown > 0 && self.mana > manaCost)
+        if(coolDownCount <= 0)
+        {
+            coolDownCount = coolDown;
+        }
+        else if (coolDownCount > 0 && self.mana > manaCost)
         {
             self.mana -= manaCost;
 
+            if(encounter.CurrentCharacterTurn == self)
+            {
+                encounter.CurrentCharacterTurn = other;
+                coolDownCount--;
+            }
+
+            Debug.Log("Stunned!");
         }
-        Debug.Log("Stunned!");
+
+        self.characterManaSlider.value = self.mana;
     }
 }
