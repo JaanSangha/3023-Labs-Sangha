@@ -119,7 +119,6 @@ public class PlayerBehaviour : MonoBehaviour
 
     }
 
-<<<<<<< HEAD
     void PlayRandomEncounterDebug()
     {
         //canMove = false;
@@ -130,7 +129,6 @@ public class PlayerBehaviour : MonoBehaviour
         //canMove = false;
     }
 
-=======
     void SaveLocation()
     {
         PlayerPrefs.SetString("Location", "Loacation X: " + transform.position.x + " Location Y: " + transform.position.y);
@@ -146,5 +144,4 @@ public class PlayerBehaviour : MonoBehaviour
         Debug.Log("LocationLoaded");
 
     }
->>>>>>> 50ec57d0a1912c44ddc3e7865d3253ec03625f0e
 }
