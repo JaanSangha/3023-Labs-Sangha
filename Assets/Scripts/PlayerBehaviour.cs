@@ -93,19 +93,18 @@ public class PlayerBehaviour : MonoBehaviour
 
     IEnumerator CameraShake(float ShakeTime)
     {
-        Vector3 CamPos = playerCamera.transform.position;
+        float CamPos = playerCamera.transform.position.x;
         float shakeMagnitude = 0.1f;
 
         while (ShakeTime > 0)
-        {
-            playerCamera.transform.position = CamPos + Random.insideUnitSphere * shakeMagnitude;
-
+        { 
+            playerCamera.transform.position = new Vector3((CamPos + Random.Range(0,2) * shakeMagnitude), playerCamera.transform.position.y, playerCamera.transform.position.z);
             ShakeTime -= Time.deltaTime * 0.8f;
             yield return null;
         }
        
         ShakeTime = 0f;
-        transform.localPosition = CamPos;
+        playerCamera.transform.position = new Vector3(CamPos, playerCamera.transform.position.y, playerCamera.transform.position.z);
 
         PlayRandomEncounterDebug();
     }
@@ -126,11 +125,11 @@ public class PlayerBehaviour : MonoBehaviour
 
         if (Physics2D.OverlapCircle(transform.position, 0.01f, randomEncounterLayer) != null)
         {
-            if (p <= 8)
+            if (p <= 9)
             {
                 canMove = false;
-                StartCoroutine(CameraShake(2.0f));
-               // PlayRandomEncounterDebug();
+                rigidbody.velocity = new Vector3(0,0,0);
+                StartCoroutine(CameraShake(1.50f));
             }
         }
 
