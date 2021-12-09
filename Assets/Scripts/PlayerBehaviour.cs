@@ -75,24 +75,39 @@ public class PlayerBehaviour : MonoBehaviour
         float inputX = Input.GetAxisRaw("Horizontal");
         float inputY = Input.GetAxisRaw("Vertical");
 
-        if (canMove)
-        {
-            rigidbody.velocity = new Vector2(inputX * moveSpeed, inputY * moveSpeed);
-        }
+        // if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+        // {
+            if (canMove)
+            {
+                rigidbody.velocity = new Vector2(inputX * moveSpeed, inputY * moveSpeed);
+            }
+        // }
 
-       // if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
-       // {
-
-       // }
         if (rigidbody.velocity.x != 0 || rigidbody.velocity.y != 0)
         {
             CheckForEncounter();
             Debug.Log("moving");
         }
 
-        //Debug.Log(rigidbody.velocity.y);
-        //Debug.Log("x: :" + rigidbody.velocity.x);
+    }
 
+    IEnumerator CameraShake(float ShakeTime)
+    {
+        Vector3 CamPos = playerCamera.transform.position;
+        float shakeMagnitude = 0.1f;
+
+        while (ShakeTime > 0)
+        {
+            playerCamera.transform.position = CamPos + Random.insideUnitSphere * shakeMagnitude;
+
+            ShakeTime -= Time.deltaTime * 0.8f;
+            yield return null;
+        }
+       
+        ShakeTime = 0f;
+        transform.localPosition = CamPos;
+
+        PlayRandomEncounterDebug();
     }
 
     public void SetCanMoveTrue()
@@ -113,7 +128,9 @@ public class PlayerBehaviour : MonoBehaviour
         {
             if (p <= 8)
             {
-                PlayRandomEncounterDebug();
+                canMove = false;
+                StartCoroutine(CameraShake(2.0f));
+               // PlayRandomEncounterDebug();
             }
         }
 
@@ -126,7 +143,6 @@ public class PlayerBehaviour : MonoBehaviour
         Instantiate(BattleScenePrefab, new Vector3(0, 0, 0), Quaternion.identity);
         soundManager.GetComponent<SoundManager>().PlayEncounterMusic();
         Debug.Log("Encounter");
-        //canMove = false;
     }
 
     void SaveLocation()
