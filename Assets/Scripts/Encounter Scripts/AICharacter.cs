@@ -1,14 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AICharacter : ICharacter
 {
-    public float mana = 100;
     [SerializeField]
     private PlayerCharacter player;
     [SerializeField]
     private EncounterInstance myEncounter;
+
+    private void Start()
+    {
+        myEncounter = GetComponentInParent<EncounterInstance>();
+        characterManaSlider = transform.GetChild(0).gameObject.GetComponent<Slider>();
+        characterHealthSlider = transform.GetChild(1).gameObject.GetComponent<Slider>();
+    }
+
     public override void TakeTurn(EncounterInstance encounter)
     {
         myEncounter = encounter;
@@ -31,13 +39,13 @@ public class AICharacter : ICharacter
         //Choose what action to do!
         Debug.Log("Enemy taking turn");
         yield return new WaitForSeconds(3.0f);
-        UseAbility(0);
+        UseAbility(0, encounter);
         encounter.AdvanceTurns();
     }
 
-    public void UseAbility(int slot)
+    public void UseAbility(int slot, EncounterInstance EN)
     {
-        abilities[slot].Cast(this, player);
+        abilities[slot].Cast(this, player, EN);
     }
 
 }

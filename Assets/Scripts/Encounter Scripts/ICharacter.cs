@@ -14,20 +14,23 @@ public abstract class ICharacter : MonoBehaviour
     [SerializeField]
     protected EncounterUI encounterUI;
 
-    public Slider characterMana;
+    public Slider characterManaSlider;
+    public Slider characterHealthSlider;
+
+    public float mana = 100;
+    public float pHealth = 100;
 
     //first character is the caster, second is the target
     //public UnityEvent<Ability> onAbilityCast;
     private void Start()
     {
-        characterMana.value = 100;
-        characterMana.value = encounter.Player.mana;
-        characterMana.value = encounter.Enemy.mana;
+        characterManaSlider.value = mana;
+        characterHealthSlider.value = pHealth;
     }
-    public void UseAbility(int abilitySlot, ICharacter self, ICharacter opponent)
-    {
-        abilities[abilitySlot].Cast(self, opponent);
-    }
+    //public void UseAbility(int abilitySlot, ICharacter self, ICharacter opponent)
+    //{
+    //    abilities[abilitySlot].Cast(self, opponent, encounter);
+    //}
 
     public abstract void TakeTurn(EncounterInstance encounter);
 }

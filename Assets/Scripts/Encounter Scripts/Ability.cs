@@ -23,12 +23,12 @@ public class Ability : ScriptableObject
     private IEffect[] effects;
 
 
-    public void Cast(ICharacter self, ICharacter other)
+    public void Cast(ICharacter self, ICharacter other, EncounterInstance encounter)
     {
         Debug.Log("Used: " + name);
         foreach (IEffect effect in effects)
         {
-            effect.ApplyEffect(self, other);
+            effect.ApplyEffect(self, other, encounter);
         }
 
     }

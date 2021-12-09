@@ -1700,7 +1700,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dd1d5439ae4de8f43a583df95fe12410, type: 2}
   - {fileID: 11400000, guid: c82ab170c6e115b41b6d3cdfb21f8afa, type: 2}
   encounterUI: {fileID: 4484427959482430982}
+  characterManaSlider: {fileID: 0}
+  characterHealthSlider: {fileID: 0}
   mana: 100
+  pHealth: 100
   player: {fileID: 0}
   myEncounter: {fileID: 0}
 --- !u!1 &7889978885556133002
@@ -1796,6 +1799,8 @@ MonoBehaviour:
   abilities:
   - {fileID: 11400000, guid: c82ab170c6e115b41b6d3cdfb21f8afa, type: 2}
   encounterUI: {fileID: 4484427959482430982}
+  characterManaSlider: {fileID: 0}
+  characterHealthSlider: {fileID: 0}
   mana: 100
   pHealth: 100
   opponent: {fileID: 0}
@@ -2467,9 +2472,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 7889978885749616242}
     m_Modifications:
     - target: {fileID: 1430895456598525283, guid: d808428c49d07be4b9afb5f399432af0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430895456598525283, guid: d808428c49d07be4b9afb5f399432af0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1561990721258825771}
+    - target: {fileID: 1430895456598525283, guid: d808428c49d07be4b9afb5f399432af0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UseAbility
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430895456598525283, guid: d808428c49d07be4b9afb5f399432af0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3662863817783888046, guid: d808428c49d07be4b9afb5f399432af0, type: 3}
       propertyPath: m_Pivot.x
       value: 0
