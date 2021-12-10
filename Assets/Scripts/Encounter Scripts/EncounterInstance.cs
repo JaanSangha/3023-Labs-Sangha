@@ -93,7 +93,7 @@ public class EncounterInstance : MonoBehaviour
     {
         if (player.pHealth < 0)
         {
-            PlayerRef.GetComponent<PlayerBehaviour>().LoadLocation();
+            playerInst.GetComponent<PlayerBehaviour>().LoadLocation();
             playerInst.EncounterWinorLoss = false;
         }
         else if (enemy.pHealth < 0)
