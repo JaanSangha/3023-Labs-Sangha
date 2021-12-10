@@ -76,7 +76,7 @@ public class EncounterInstance : MonoBehaviour
         onCharacterTurnBegin.Invoke(currentCharacterTurn);
         currentCharacterTurn.TakeTurn(this);
 
-        if(player.pHealth < 0 || enemy.pHealth < 0)
+        if(player.pHealth <= 0 || enemy.pHealth <= 0)
         {
             GameOverState();
         }
@@ -84,22 +84,24 @@ public class EncounterInstance : MonoBehaviour
 
     public void EscapeEncounter()
     {
-        PlayerRef.GetComponent<PlayerBehaviour>().SetCanMoveTrue();
+        playerInst.GetComponent<PlayerBehaviour>().SetCanMoveTrue();
         GameObject EncounterPrefab = GetComponentInParent<EncounterUI>().gameObject;
         Destroy(EncounterPrefab);
     }
 
     void GameOverState()
     {
-        if (player.pHealth < 0)
+        if (player.pHealth <= 0)
         {
             playerInst.GetComponent<PlayerBehaviour>().LoadLocation();
             playerInst.EncounterWinorLoss = false;
+            //EscapeEncounter();
         }
-        else if (enemy.pHealth < 0)
+        else if (enemy.pHealth <= 0)
         {
             playerInst.EncounterWinorLoss = true;
-            TakeEnemyAbilities();
+            //TakeEnemyAbilities();
+            //EscapeEncounter();
         }
         Debug.Log("Character is dead");
         EscapeEncounter();
