@@ -12,14 +12,14 @@ public class GameSaver : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            Save();
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            Load();
-        }
+        //if (Input.GetKeyDown(KeyCode.K))
+        //{
+        //    Save();
+        //}
+        //if (Input.GetKeyDown(KeyCode.L))
+        //{
+        //    Load();
+        //}
     }
 
     public void Save()

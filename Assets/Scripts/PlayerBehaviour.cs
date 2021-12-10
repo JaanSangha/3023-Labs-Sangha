@@ -81,24 +81,38 @@ public class PlayerBehaviour : MonoBehaviour
         float inputX = Input.GetAxisRaw("Horizontal");
         float inputY = Input.GetAxisRaw("Vertical");
 
-        if (canMove)
-        {
-            rigidbody.velocity = new Vector2(inputX * moveSpeed, inputY * moveSpeed);
-        }
+        // if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+        // {
+            if (canMove)
+            {
+                rigidbody.velocity = new Vector2(inputX * moveSpeed, inputY * moveSpeed);
+            }
+        // }
 
-       // if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
-       // {
-
-       // }
         if (rigidbody.velocity.x != 0 || rigidbody.velocity.y != 0)
         {
             CheckForEncounter();
             Debug.Log("moving");
         }
 
-        //Debug.Log(rigidbody.velocity.y);
-        //Debug.Log("x: :" + rigidbody.velocity.x);
+    }
 
+    IEnumerator CameraShake(float ShakeTime)
+    {
+        float CamPos = playerCamera.transform.position.x;
+        float shakeMagnitude = 0.1f;
+
+        while (ShakeTime > 0)
+        { 
+            playerCamera.transform.position = new Vector3((CamPos + Random.Range(0,2) * shakeMagnitude), playerCamera.transform.position.y, playerCamera.transform.position.z);
+            ShakeTime -= Time.deltaTime * 0.8f;
+            yield return null;
+        }
+       
+        ShakeTime = 0f;
+        playerCamera.transform.position = new Vector3(CamPos, playerCamera.transform.position.y, playerCamera.transform.position.z);
+
+        PlayRandomEncounterDebug();
     }
 
     public void SetCanMoveTrue()
@@ -117,9 +131,11 @@ public class PlayerBehaviour : MonoBehaviour
 
         if (Physics2D.OverlapCircle(transform.position, 0.01f, randomEncounterLayer) != null)
         {
-            if (p <= 8)
+            if (p <= 9)
             {
-                PlayRandomEncounterDebug();
+                canMove = false;
+                rigidbody.velocity = new Vector3(0,0,0);
+                StartCoroutine(CameraShake(1.50f));
             }
         }
 
@@ -132,7 +148,6 @@ public class PlayerBehaviour : MonoBehaviour
         Instantiate(BattleScenePrefab, new Vector3(0, 0, 0), Quaternion.identity);
         soundManager.GetComponent<SoundManager>().PlayEncounterMusic();
         Debug.Log("Encounter");
-        //canMove = false;
     }
 
     void SaveLocation()
