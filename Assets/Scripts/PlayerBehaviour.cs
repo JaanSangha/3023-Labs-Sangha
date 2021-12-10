@@ -11,6 +11,10 @@ public class PlayerBehaviour : MonoBehaviour
 
     GameObject soundManager;
 
+    public AudioSource audiosource;
+    public AudioClip normalStep;
+    public AudioClip grassStep;
+
     public GameObject SoundMngr
     {
         get { return soundManager; }
@@ -48,24 +52,20 @@ public class PlayerBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //float inputX = Input.GetAxisRaw("Horizontal");
-        //float inputY = Input.GetAxisRaw("Vertical");
-        //transform.position += new Vector3(inputX * moveSpeed * Time.deltaTime, inputY * moveSpeed * Time.deltaTime, 0);
 
         playerCamera.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
-        //rigidbody.velocity = new Vector2(inputX * moveSpeed, inputY * moveSpeed);
-        
 
-        //if (BattleScene.activeSelf)
-        //{
-        //    canMove = false;
-        //    Time.timeScale = 0.0f;
-        //}
-        //else
-        //{
-        //    canMove = true;
-        //    Time.timeScale = 1.0f;
-        //}
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
+        {
+            if (!audiosource.isPlaying)
+            {
+                audiosource.Play();
+            }
+        }
+        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.D))
+        {
+                audiosource.Stop();
+        }
 
         playerAnimator.SetFloat("yVelocity", rigidbody.velocity.y);
         playerAnimator.SetFloat("xVelocity", rigidbody.velocity.x);
@@ -98,6 +98,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     }
 
+    //coroutine to shake camera when encounter is found
     IEnumerator CameraShake(float ShakeTime)
     {
         float CamPos = playerCamera.transform.position.x;
@@ -126,6 +127,7 @@ public class PlayerBehaviour : MonoBehaviour
         canMove = false;
     }
 
+    //randomly start encounter
     void CheckForEncounter()
     {
         float p = Random.Range(1.0f, 1001.0f);
@@ -134,6 +136,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             if (p <= 9)
             {
+                audiosource.Stop();
                 canMove = false;
                 rigidbody.velocity = new Vector3(0,0,0);
                 StartCoroutine(CameraShake(1.50f));
@@ -144,13 +147,12 @@ public class PlayerBehaviour : MonoBehaviour
 
     void PlayRandomEncounterDebug()
     {
-        //canMove = false;
-        //BattleScene.SetActive(true);
         Instantiate(BattleScenePrefab, new Vector3(0, 0, 0), Quaternion.identity);
         soundManager.GetComponent<SoundManager>().PlayEncounterMusic();
         Debug.Log("Encounter");
     }
 
+    //save player location
     void SaveLocation()
     {
         PlayerPrefs.SetString("Location", "Loacation X: " + transform.position.x + " Location Y: " + transform.position.y);
@@ -158,6 +160,7 @@ public class PlayerBehaviour : MonoBehaviour
         PlayerPrefs.SetFloat("YPosition", transform.position.y);
         Debug.Log("LocationSaved");
     }
+    //load player location
     void LoadLocation()
     {
         string loadLocation = PlayerPrefs.GetString("Location", "");
