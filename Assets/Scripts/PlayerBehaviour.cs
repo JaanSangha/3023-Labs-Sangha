@@ -31,7 +31,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     public LayerMask randomEncounterLayer;
 
-    public bool EncounterWinorLoss;
+    public bool EncounterWinorLoss = false;
 
     // Start is called before the first frame update
     void Start()

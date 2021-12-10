@@ -17,11 +17,7 @@ public class PlayerCharacter : ICharacter
         characterHealthSlider = transform.GetChild(1).gameObject.GetComponent<Slider>();
 
         HealthBarText = characterHealthSlider.gameObject.GetComponentInChildren<TMPro.TextMeshProUGUI>();
-    }
-
-    private void Update()
-    {
-        HealthBarText.text = pHealth.ToString();
+        ManaBarText = characterManaSlider.gameObject.GetComponentInChildren<TMPro.TextMeshProUGUI>();
     }
 
     public override void TakeTurn(EncounterInstance encounter)

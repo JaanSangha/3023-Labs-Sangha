@@ -14,6 +14,8 @@ public class NonDamageEffect : IEffect
     [SerializeField]
     int coolDownCounter = 1;
 
+    int RestHealthIncrease = 10;
+
     public override void ApplyEffect(ICharacter self, ICharacter other, EncounterInstance encounter)
     {
         if (this.name == "Stun")
@@ -24,6 +26,7 @@ public class NonDamageEffect : IEffect
         if(this.name == "RestEffect" && self.mana < 100)
         {
             self.mana += manaCost;
+            self.pHealth += RestHealthIncrease;
         }
 
         if (this.name == "EscapeEffect")

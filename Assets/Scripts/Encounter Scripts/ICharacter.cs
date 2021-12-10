@@ -15,6 +15,7 @@ public abstract class ICharacter : MonoBehaviour
     protected EncounterUI encounterUI;
 
     protected TMPro.TextMeshProUGUI HealthBarText;
+    protected TMPro.TextMeshProUGUI ManaBarText;
 
     public Slider characterManaSlider;
     public Slider characterHealthSlider;
@@ -29,10 +30,12 @@ public abstract class ICharacter : MonoBehaviour
         characterManaSlider.value = mana;
         characterHealthSlider.value = pHealth;
     }
-    //public void UseAbility(int abilitySlot, ICharacter self, ICharacter opponent)
-    //{
-    //    abilities[abilitySlot].Cast(self, opponent, encounter);
-    //}
+
+    private void Update()
+    {
+        HealthBarText.text = pHealth.ToString() + "%";
+        ManaBarText.text = mana.ToString() + "%";
+    }
 
     public abstract void TakeTurn(EncounterInstance encounter);
 }

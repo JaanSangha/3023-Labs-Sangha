@@ -17,11 +17,7 @@ public class AICharacter : ICharacter
         characterHealthSlider = transform.GetChild(1).gameObject.GetComponent<Slider>();
 
         HealthBarText = characterHealthSlider.gameObject.GetComponentInChildren<TMPro.TextMeshProUGUI>();
-    }
-
-    private void Update()
-    {
-        HealthBarText.text = pHealth.ToString();
+        ManaBarText = characterManaSlider.gameObject.GetComponentInChildren<TMPro.TextMeshProUGUI>();
     }
 
     public override void TakeTurn(EncounterInstance encounter)
@@ -46,7 +42,17 @@ public class AICharacter : ICharacter
         //Choose what action to do!
         Debug.Log("Enemy taking turn");
         yield return new WaitForSeconds(3.0f);
-        UseAbility(0, encounter);
+
+        if(mana > 24 || pHealth > 24)
+        {
+            UseAbility(Random.Range(0, abilities.Length), encounter);
+        }
+        else if(pHealth < 24 || mana < 24)
+        {
+            // Uses rest ability when mana or health is low
+            UseAbility(3, encounter);
+        }
+
         encounter.AdvanceTurns();
     }
 
