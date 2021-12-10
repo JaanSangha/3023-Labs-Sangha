@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: EscapeEffect
   m_EditorClassIdentifier: 
   StunAmount: 0
-  manaCost: 30
-  coolDown: 1
-  coolDownCounter: 1
+  manaCost: 0
+  coolDown: 0
+  coolDownCounter: 0

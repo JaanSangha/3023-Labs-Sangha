@@ -14,6 +14,8 @@ public abstract class ICharacter : MonoBehaviour
     [SerializeField]
     protected EncounterUI encounterUI;
 
+    protected TMPro.TextMeshProUGUI HealthBarText;
+
     public Slider characterManaSlider;
     public Slider characterHealthSlider;
 

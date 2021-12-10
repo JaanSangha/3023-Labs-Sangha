@@ -15,6 +15,13 @@ public class AICharacter : ICharacter
         myEncounter = GetComponentInParent<EncounterInstance>();
         characterManaSlider = transform.GetChild(0).gameObject.GetComponent<Slider>();
         characterHealthSlider = transform.GetChild(1).gameObject.GetComponent<Slider>();
+
+        HealthBarText = characterHealthSlider.gameObject.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+    }
+
+    private void Update()
+    {
+        HealthBarText.text = pHealth.ToString();
     }
 
     public override void TakeTurn(EncounterInstance encounter)

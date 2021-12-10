@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: HeavyDamage
   m_EditorClassIdentifier: 
   DamageAmount: 30
-  manaCost: 0
+  manaCost: 10

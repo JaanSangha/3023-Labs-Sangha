@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d12631c384ab35640b627343630c2753, type: 3}
   m_Name: Escape
   m_EditorClassIdentifier: 
-  name: 
+  name: Escape
   description: 
-  effects: []
+  effects:
+  - {fileID: 11400000, guid: f1df6a349a03fed4f915a955c520e8a9, type: 2}
