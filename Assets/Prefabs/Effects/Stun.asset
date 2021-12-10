@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: Stun
   m_EditorClassIdentifier: 
   StunAmount: 0
+  manaCost: 20
+  coolDown: 1
+  coolDownCounter: 1

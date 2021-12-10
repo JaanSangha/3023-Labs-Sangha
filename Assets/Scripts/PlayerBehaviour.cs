@@ -11,6 +11,12 @@ public class PlayerBehaviour : MonoBehaviour
 
     GameObject soundManager;
 
+    public GameObject SoundMngr
+    {
+        get { return soundManager; }
+        private set { soundManager = value; }
+    }
+
     [SerializeField]
     private float moveSpeed = 1.0f;
 

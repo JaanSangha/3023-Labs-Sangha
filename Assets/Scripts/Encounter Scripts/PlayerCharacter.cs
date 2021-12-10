@@ -20,7 +20,7 @@ public class PlayerCharacter : ICharacter
 
     public override void TakeTurn(EncounterInstance encounter)
     {
-        myEncounter = encounter;
+        //myEncounter = encounter;
         opponent = encounter.Enemy;
         Debug.Log("Player taking turn");
        // throw new System.NotImplementedException();
@@ -29,7 +29,7 @@ public class PlayerCharacter : ICharacter
     public void UseAbility(int slot)
     {
         abilities[slot].Cast(this, opponent, myEncounter);
-        encounterUI.GetAbilityName(abilities[slot].Name);
+        //encounterUI.GetAbilityName(abilities[slot].Name);
         myEncounter.AdvanceTurns();
     }
 }

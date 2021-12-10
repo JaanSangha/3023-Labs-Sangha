@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c146d8e31a90c34aa95da844f79bd8b, type: 3}
-  m_Name: HeavyDamage
+  m_Script: {fileID: 11500000, guid: 83de6c7017d2c9a48a42cb51fc8a3a17, type: 3}
+  m_Name: RestEffect
   m_EditorClassIdentifier: 
-  DamageAmount: 30
-  manaCost: 0
+  StunAmount: 0
+  manaCost: 20
+  coolDown: 0
+  coolDownCounter: 0

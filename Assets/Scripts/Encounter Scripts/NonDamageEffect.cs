@@ -11,26 +11,54 @@ public class NonDamageEffect : IEffect
     int manaCost = 30;
     [SerializeField]
     int coolDown = 1; // Number of turns the non damage has effect each time
-    int coolDownCount = 0;
+    [SerializeField]
+    int coolDownCounter = 1;
+
     public override void ApplyEffect(ICharacter self, ICharacter other, EncounterInstance encounter)
     {
-        if(coolDownCount <= 0)
+        if (this.name == "Stun")
         {
-            coolDownCount = coolDown;
+            ApplyStunEffect(self, other, encounter);
         }
-        else if (coolDownCount > 0 && self.mana > manaCost)
+
+        if(this.name == "RestEffect" && self.mana < 100)
+        {
+            self.mana += manaCost;
+        }
+
+        if (this.name == "EscapeEffect")
+        {
+            if(encounter.CurrentCharacterTurn.tag == "Player")
+            {
+                Debug.Log("Escape Route");
+                encounter.playerInst.SoundMngr.GetComponent<SoundManager>().FadeOutEncounter();
+                encounter.playerInst.SetCanMoveTrue();
+                encounter.EscapeEncounter();
+            }
+        }
+
+        Debug.Log(this.name);
+        self.characterManaSlider.value = self.mana;
+    }
+
+    void ApplyStunEffect(ICharacter self, ICharacter other, EncounterInstance encounter)
+    {
+        if (coolDownCounter > 0 && self.mana > manaCost)
         {
             self.mana -= manaCost;
 
-            if(encounter.CurrentCharacterTurn == self)
+            if (encounter.CurrentCharacterTurn == self)
             {
+                // Passes the current turn as the opponent to skip
+                // the opponent's turn
                 encounter.CurrentCharacterTurn = other;
-                coolDownCount--;
             }
-
             Debug.Log("Stunned!");
+            coolDownCounter--;
         }
-
-        self.characterManaSlider.value = self.mana;
+        else if (coolDownCounter <= 0)
+        {
+            coolDownCounter = coolDown;
+        }
     }
 }

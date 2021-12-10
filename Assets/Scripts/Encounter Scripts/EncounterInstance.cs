@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class EncounterInstance : MonoBehaviour
 {
+
+    public PlayerBehaviour playerInst;
     [SerializeField]
     private PlayerCharacter player;
 
@@ -48,6 +50,7 @@ public class EncounterInstance : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        playerInst = FindObjectOfType<PlayerBehaviour>();
         currentCharacterTurn = player;
         currentCharacterTurn.TakeTurn(this);
         onPlayerTurnBegin.Invoke(player);
@@ -71,5 +74,11 @@ public class EncounterInstance : MonoBehaviour
 
         onCharacterTurnBegin.Invoke(currentCharacterTurn);
         currentCharacterTurn.TakeTurn(this);
+    }
+
+    public void EscapeEncounter()
+    {
+        GameObject EncounterPrefab = GetComponentInParent<EncounterUI>().gameObject;
+        Destroy(EncounterPrefab);
     }
 }
