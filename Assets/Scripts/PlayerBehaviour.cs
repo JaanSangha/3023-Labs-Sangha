@@ -57,7 +57,7 @@ public class PlayerBehaviour : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
         {
-            if (!audiosource.isPlaying)
+            if (!audiosource.isPlaying && canMove)
             {
                 audiosource.Play();
             }
@@ -161,12 +161,11 @@ public class PlayerBehaviour : MonoBehaviour
         Debug.Log("LocationSaved");
     }
     //load player location
-    void LoadLocation()
+    public void LoadLocation()
     {
         string loadLocation = PlayerPrefs.GetString("Location", "");
         transform.position = new Vector3(PlayerPrefs.GetFloat("XPosition"), PlayerPrefs.GetFloat("YPosition"), 0);
         Debug.Log(loadLocation);
         Debug.Log("LocationLoaded");
-
     }
 }

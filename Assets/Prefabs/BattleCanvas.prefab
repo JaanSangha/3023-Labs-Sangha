@@ -2310,6 +2310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInst: {fileID: 0}
   player: {fileID: 1561990721258825771}
+  PlayerRef: {fileID: 6474686146499863741, guid: 375d47b7130e56b4ab881dfeb19ba756, type: 3}
   enemy: {fileID: 1944439973110832205}
   currentCharacterTurn: {fileID: 0}
   onCharacterTurnBegin:

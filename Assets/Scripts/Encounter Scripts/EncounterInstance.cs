@@ -9,6 +9,7 @@ public class EncounterInstance : MonoBehaviour
     public PlayerBehaviour playerInst;
     [SerializeField]
     private PlayerCharacter player;
+    public GameObject PlayerRef;
 
     public PlayerCharacter Player
     {
@@ -83,6 +84,7 @@ public class EncounterInstance : MonoBehaviour
 
     public void EscapeEncounter()
     {
+        PlayerRef.GetComponent<PlayerBehaviour>().SetCanMoveTrue();
         GameObject EncounterPrefab = GetComponentInParent<EncounterUI>().gameObject;
         Destroy(EncounterPrefab);
     }
@@ -91,6 +93,7 @@ public class EncounterInstance : MonoBehaviour
     {
         if (player.pHealth < 0)
         {
+            PlayerRef.GetComponent<PlayerBehaviour>().LoadLocation();
             playerInst.EncounterWinorLoss = false;
         }
         else if (enemy.pHealth < 0)
