@@ -96,8 +96,23 @@ public class EncounterInstance : MonoBehaviour
         else if (enemy.pHealth < 0)
         {
             playerInst.EncounterWinorLoss = true;
+            TakeEnemyAbilities();
         }
         Debug.Log("Character is dead");
         EscapeEncounter();
+    }
+
+    void TakeEnemyAbilities()
+    {
+        foreach(var ability in enemy.Abilities)
+        {
+            foreach(var playerAbility in player.Abilities)
+            {
+                if(ability.Name != playerAbility.Name)
+                {
+                    player.Abilities.Add(ability);
+                }
+            }
+        }
     }
 }

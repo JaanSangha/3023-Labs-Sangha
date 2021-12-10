@@ -2412,22 +2412,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7889978885749616242}
     m_Modifications:
-    - target: {fileID: 1430895456598525283, guid: d808428c49d07be4b9afb5f399432af0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 3
+    - target: {fileID: 425012524324484511, guid: d808428c49d07be4b9afb5f399432af0, type: 3}
+      propertyPath: abilitySlot
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1430895456598525283, guid: d808428c49d07be4b9afb5f399432af0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1561990721258825771}
-    - target: {fileID: 1430895456598525283, guid: d808428c49d07be4b9afb5f399432af0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: UseAbility
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430895456598525283, guid: d808428c49d07be4b9afb5f399432af0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 3662863817783888046, guid: d808428c49d07be4b9afb5f399432af0, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2516,10 +2508,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AbilityButton
       objectReference: {fileID: 0}
-    - target: {fileID: 9049211290010405636, guid: d808428c49d07be4b9afb5f399432af0, type: 3}
-      propertyPath: m_text
-      value: Charge
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d808428c49d07be4b9afb5f399432af0, type: 3}
 --- !u!224 &4341938616359056876 stripped
@@ -2534,6 +2522,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7889978885749616242}
     m_Modifications:
+    - target: {fileID: 425012524324484511, guid: d808428c49d07be4b9afb5f399432af0, type: 3}
+      propertyPath: abilitySlot
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430895456598525283, guid: d808428c49d07be4b9afb5f399432af0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1430895456598525283, guid: d808428c49d07be4b9afb5f399432af0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 3
@@ -2644,7 +2640,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9049211290010405636, guid: d808428c49d07be4b9afb5f399432af0, type: 3}
       propertyPath: m_text
-      value: Scratch
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9049211290010405636, guid: d808428c49d07be4b9afb5f399432af0, type: 3}
+      propertyPath: m_fontSize
+      value: 36
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d808428c49d07be4b9afb5f399432af0, type: 3}
@@ -2660,25 +2660,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7889978885749616242}
     m_Modifications:
-    - target: {fileID: 1430895456598525283, guid: d808428c49d07be4b9afb5f399432af0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+    - target: {fileID: 425012524324484511, guid: d808428c49d07be4b9afb5f399432af0, type: 3}
+      propertyPath: abilitySlot
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430895456598525283, guid: d808428c49d07be4b9afb5f399432af0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1561990721258825771}
-    - target: {fileID: 1430895456598525283, guid: d808428c49d07be4b9afb5f399432af0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: UseAbility
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430895456598525283, guid: d808428c49d07be4b9afb5f399432af0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430895456598525283, guid: d808428c49d07be4b9afb5f399432af0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3662863817783888046, guid: d808428c49d07be4b9afb5f399432af0, type: 3}
       propertyPath: m_Pivot.x
@@ -2768,10 +2752,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AbilityButton (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 9049211290010405636, guid: d808428c49d07be4b9afb5f399432af0, type: 3}
-      propertyPath: m_text
-      value: Escape
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d808428c49d07be4b9afb5f399432af0, type: 3}
 --- !u!224 &4978870741465824607 stripped
@@ -2786,6 +2766,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7889978885749616242}
     m_Modifications:
+    - target: {fileID: 425012524324484511, guid: d808428c49d07be4b9afb5f399432af0, type: 3}
+      propertyPath: abilitySlot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430895456598525283, guid: d808428c49d07be4b9afb5f399432af0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1430895456598525283, guid: d808428c49d07be4b9afb5f399432af0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 3
@@ -2896,7 +2884,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9049211290010405636, guid: d808428c49d07be4b9afb5f399432af0, type: 3}
       propertyPath: m_text
-      value: Rest
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9049211290010405636, guid: d808428c49d07be4b9afb5f399432af0, type: 3}
+      propertyPath: m_fontSize
+      value: 36
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d808428c49d07be4b9afb5f399432af0, type: 3}

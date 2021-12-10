@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c146d8e31a90c34aa95da844f79bd8b, type: 3}
   m_Name: HeavyDamage
   m_EditorClassIdentifier: 
-  DamageAmount: 30
+  DamageAmount: 20
   manaCost: 10

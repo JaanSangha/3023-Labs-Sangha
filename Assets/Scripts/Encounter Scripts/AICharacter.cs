@@ -45,7 +45,7 @@ public class AICharacter : ICharacter
 
         if(mana > 24 || pHealth > 24)
         {
-            UseAbility(Random.Range(0, abilities.Length), encounter);
+            UseAbility(Random.Range(0, abilities.Count - 1), encounter);
         }
         else if(pHealth < 24 || mana < 24)
         {

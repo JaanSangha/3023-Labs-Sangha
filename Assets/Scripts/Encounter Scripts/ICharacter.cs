@@ -7,7 +7,13 @@ using UnityEngine.UI;
 public abstract class ICharacter : MonoBehaviour
 {
     [SerializeField]
-    protected Ability[] abilities;
+    protected List<Ability> abilities;
+
+    public List<Ability> Abilities
+    {
+        get { return abilities; }
+        set { abilities = value; }
+    }
 
     private EncounterInstance encounter;
 
@@ -33,6 +39,16 @@ public abstract class ICharacter : MonoBehaviour
 
     private void Update()
     {
+        if(pHealth > 100)
+        {
+            pHealth = 100;
+        }
+
+        if(mana > 100)
+        {
+            mana = 100;
+        }
+
         HealthBarText.text = pHealth.ToString() + "%";
         ManaBarText.text = mana.ToString() + "%";
     }
